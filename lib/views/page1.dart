@@ -16,7 +16,7 @@ class _Page1State extends State<Page1> {
 
   @override
   Widget build(BuildContext context) {
-    Widget buildUserInfo(Employee employee) => Column(children: [
+    Widget buildUserInfo(Employee employee) => Column(children: <Widget>[
           const Text('from firestore'),
           const SizedBox(height: 15),
           Text(employee.id, style: txtstyle),
@@ -42,6 +42,7 @@ class _Page1State extends State<Page1> {
                   id: data['id'] as String,
                   name: data['name'] as String,
                   email: data['email'] as String,
+                  image: data['image'] as String,
                 );
                 return buildUserInfo(employee);
               }

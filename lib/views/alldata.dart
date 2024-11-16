@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_it415_firebase/models/employee.dart';
 import 'package:flutter_demo_it415_firebase/views/login.dart';
+import 'package:flutter_demo_it415_firebase/views/update_photo.dart';
 
 import 'add_data.dart';
 import 'update_data.dart';
@@ -40,12 +41,21 @@ class _AllDataState extends State<AllData> {
           margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
           child: ListTile(
             leading: CircleAvatar(
-              child: Text(employee.name[0]),
+              backgroundImage: NetworkImage(employee.image),
+              radius: 25,
             ),
             title: Text(employee.name),
             subtitle: Text(employee.email),
             dense: true,
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) =>
+                      UpdatePhoto(employee: employee),
+                ),
+              );
+            },
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
